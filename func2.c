@@ -143,3 +143,47 @@ int print_rot13string(va_list types, char buffer[],
 	return (count);
 }
 
+/******* PRINT REVERSE ******/
+/**
+ * print_reverse - Prints reverse string
+ * @types: Lista of arguments
+ * @size: Size specifier
+ * @width: get width
+ * @precision: Precision specification
+ * @flags:  Calculates active flags
+ * @buffer: Buffer array to handle print
+ * Return: Numbers of chars printed
+ */
+int print_reverse(va_list types, char buffer[],
+	int flags, int width, int precision, int size)
+{
+	char *str;
+	int i, count = 0;
+
+	UNUSED(width);
+	UNUSED(size);
+	UNUSED(buffer);
+	UNUSED(flags);
+
+
+	str = va_arg(types, char *);
+
+	if (str == NULL)
+	{
+		UNUSED(precision);
+
+		str = ")Null(";
+	}
+	for (i = 0; str[i]; i++)
+		;
+
+	for (i = i - 1; i >= 0; i--)
+	{
+		char z = str[i];
+
+		write(1, &z, 1);
+		count++;
+	}
+	return (count);
+}
+
